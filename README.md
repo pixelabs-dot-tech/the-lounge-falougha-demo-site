@@ -2,7 +2,7 @@
 
 Pitch website for The Lounge, a resto-bar in Falougha ([@thelounge.falougha](https://www.instagram.com/thelounge.falougha/)), built by [Pixelabs](https://pixelabs.tech). Ordering goes through [jeetak](https://jeetaklb.com).
 
-Preview: added once the temporary domain is live.
+Preview: https://dimgrey-buffalo-431530.hostingersite.com
 
 - `index.html`, `assets/`, `.htaccess`, `site.webmanifest`: the static site (no build step needed to host it)
 - `assets/js/menu.js`: the menu. It shows eight favourites for now; swap in the full menu when it arrives

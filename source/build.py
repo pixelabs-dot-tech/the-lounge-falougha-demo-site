@@ -56,6 +56,14 @@ if not SITE_URL:
     html = re.sub(r'<meta property="og:url" content="">\n', '', html)
     html = html.replace('"url":"",', '')
 assert '{{' not in html, re.findall(r'\{\{[A-Z_]+\}\}', html)
+# cache-busting: Hostinger keeps CSS and JS for days, so each file gets a content hash
+import hashlib
+def _ver(m):
+    f = SITE / m.group(2)
+    h = hashlib.sha1(f.read_bytes()).hexdigest()[:10]
+    return '%s="%s?v=%s"' % (m.group(1), m.group(2), h)
+html = re.sub(r'(href|src)="(assets/(?:css|js)/[^"?]+\.(?:css|js))"', _ver, html)
+
 # full document for a normal web server
 cut = html.index('<svg width="0" height="0"')
 head, body = html[:cut], html[cut:]
